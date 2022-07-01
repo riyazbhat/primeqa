@@ -37,6 +37,16 @@ python examples/mrc/run_mrc.py --model_name_or_path ${TRAINING_OUTPUT_DIR} \
        --per_device_eval_batch_size 128 --overwrite_output_dir
 ```
 
+Training with the previously defined hyper-parameters yields the following results:
+```shell
+  eval_avg_minimal_f1        = 0.6745
+  eval_avg_minimal_precision = 0.7331
+  eval_avg_minimal_recall    =  0.628
+  eval_avg_passage_f1        = 0.7215
+  eval_avg_passage_precision = 0.7403
+  eval_avg_passage_recall    = 0.7061
+```
+
 For eval-only TyDiQA with support for boolean questions (for [details](../boolqa/README.md)):
 ```shell
 python examples/mrc/run_mrc.py --model_name_or_path ${BOOLEAN_MODEL_NAME} \
@@ -44,8 +54,6 @@ python examples/mrc/run_mrc.py --model_name_or_path ${BOOLEAN_MODEL_NAME} \
        --per_device_eval_batch_size 128 --overwrite_output_dir \
        --do_boolean --boolean_config  examples/boolqa/tydi_boolqa_config.json
 ```
-
-
 
 For eval with confidence calibration, add the following additional command line arguments:
 ```shell
@@ -64,6 +72,12 @@ For the SQUAD 1.1 dataset use the folowing additional command line arguments for
        --eval_metrics squad 
 ```
 
+Training with the previously defined hyper-parameters yields the following results:
+```shell
+ eval_exact_match = 88.7133
+ eval_f1          = 94.3525
+```
+
 For the XQuAD dataset run the evaluation script after the model has been trained on SQuAD 1.1. 
 The dataset configurations for all languages are supported.
 For the XQuAD in ZH use the following command line arguments for eval:
@@ -74,6 +88,12 @@ For the XQuAD in ZH use the following command line arguments for eval:
        --postprocessor primeqa.mrc.processors.postprocessors.squad.SQUADPostProcessor \
        --eval_metrics SQUAD 
 ```
+
+Training with the previously defined hyper-parameters yields the following results:
+|  | en   | es   |. de. |. el |  ru. |. tr |.ar. | vi. | th | zh | hi | 
+|--| ---- | -----|------|-----|------|-----|-----|-----|----|----|----|
+|F1| 87.5 | 82.1 | 80.7 |81.5 | 80.0 | 75.0| 75.1| 80.0|75.3|70.3|77.2|
+|EM| 76.7 | 63.4 | 65.4 |64.2 | 63.6 | 59.3| 59.1| 61.3|65.5|62.2|61.8|
 
 For the MLQA dataset run the evaluation script after the model has been trained on SQuAD 1.1. 
 The dataset configurations for all language combinations are supported.
