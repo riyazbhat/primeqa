@@ -82,7 +82,7 @@ extras["all"] = list(_deps)
 install_requires = extras["install"]
 
 setup(
-    name="prime-qa",
+    name="primeqa",
     version=version,
     author=", ".join(authors),
     author_email="TODO",
