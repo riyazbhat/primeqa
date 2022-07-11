@@ -5,7 +5,7 @@ import pytest
 
 def test_preprocess_data_for_qg():
     sd = SquadDataset()
-    data = sd.preprocess_data_for_qg("validation")
+    data = sd.preprocess_data_for_qg("validation[:50]")
     assert data!=None
     assert len(data['question']) == len(data['input'])
 
